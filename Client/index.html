@@ -10,7 +10,13 @@
 </head>
 
 <body>
-  <h1 style="text-align: center;">Typhoon Visual.</h1>
+  <!-- <h1 style="text-align: center;">Typhoon Visual.</h1> -->
+  <div class="jumbotron jumbotron-fluid jumbotron-background">
+    <div class="container">
+      <h1 class="display-3 jumbotron-font">Typhoon Visual</h1>
+      <p class="lead jumbotron-font">Heres a cool description of our dumb project!.</p>
+    </div>
+  </div>
 
   <div class="container">
     <div class="row">
@@ -25,12 +31,14 @@
         <br> -->
         <form>
           <div class="form-group">
-            <label for="exampleInputFile">File input</label>
+            <label class="position-label" for="exampleInputFile">File input</label>
+              <p>If you wish to add more data to the already tabulated typhoon data, you may do so here!</p>
             <input type="file" class="form-control-file" id="exampleInputFile">
           </div>
 
           <div class="input-group">
-            <label for="coordInputExample">Coordinates for the grid</label>
+            <label class="position-label" for="coordInputExample">Coordinates for the grid</label>
+              <p>Enter the Coordinates for the 20 x 20 grid of typhoon data you would like to see here!</p>
             <input class="form-control position-box" type="text" id="Lat1" placeholder="Latitude 1"></input>
             <br>
             <input class="form-control position-box" type="text" id="Long1" placeholder="Longitude 1"></input>
@@ -38,7 +46,7 @@
             <input class="form-control position-box" type="text" id="Lat2" placeholder="Latitude 2"></input>
             <br>
             <input class="form-control position-box" type="text" id="Long2" placeholder="Longitude 2"></input>
-            <button type="button" id="coordSubmit">Submit</button>
+            <button class ="btn btn-background" type="button" id="coordSubmit">Submit</button>
           </div>
         </form>
       </div>

@@ -1,3 +1,20 @@
 .position-box{
   margin-bottom: 1em !important;
 }
+
+.position-label{
+  font-size: 14pt;
+}
+
+.jumbotron-background{
+  background-color: #1C7D87;
+}
+
+.jumbotron-font{
+  color: white !important;
+}
+
+.btn-background{
+  background-color: #1C7D87;
+  color: white;
+}
