@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  <!-- <h1 style="text-align: center;">Typhoon Visual.</h1> -->
   <div class="jumbotron jumbotron-fluid jumbotron-background">
     <div class="container">
       <h1 class="display-3 jumbotron-font">Typhoon Visual</h1>
@@ -21,14 +20,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <!-- <h1>
-          Typhoon Visual
-        </h1>
-        <div>
-          <button type = "button" id = "FuckTarraButton">Suck it Tarra!</button>
-          <button type = "button" id = "SuckItButton">Press Me</button><br>
-        </div>
-        <br> -->
         <form>
           <div class="form-group">
             <label class="position-label" for="exampleInputFile">File input</label>
@@ -53,22 +44,36 @@
 
       <div class="col-md-8">
         <div>
-          hello yes i am big. This is where big grid shall go.
+          hello yes i am big. This is where big grid shall go. <br>
+          <canvas id="canvas" width="800px" height="800px" style="background: #fff; magrin:20px;"></canvas>
         </div>
       </div>
     </div>
   </div>
-
 </body>
 </html>
 
-<!-- <script>
-    var btn = document.getElementById("FuckTarraButton");
-    btn.onclick = function() {
-        window.alert("HAHAHAHAHAHAHAHAH fuck you");
-    };
-    var btn2 = document.getElementById("SuckItButton");
-    btn2.onclick = function() {
-        window.alert("Suck it.");
+<script type="text/javascript" language="javascript">
+  var bw = 600;
+  var bh = 600;
+  var p = 15;
+
+  var canvas = document.getElementById("canvas");
+  var context = canvas.getContext("2d");
+  function drawBoard(){
+    for (var x = 0; x <= bw; x += 10) {
+      context.moveTo(0.5 + x + p, p);
+      context.lineTo(0.5 + x + p, bh + p);
     }
-</script> -->
+
+
+    for (var x = 0; x <= bh; x += 10) {
+      context.moveTo(p, 0.5 + x + p);
+      context.lineTo(bw + p, 0.5 + x + p);
+    }
+
+    context.strokeStyle = "black";
+    context.stroke();
+}
+drawBoard();
+</script>
