@@ -6,46 +6,55 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
-  <title>Dank Memes</title>
-</head>
-
-<body>
-  <h1 style="text-align: center;">Home of Dank Memes.</h1>
-
   <title>Typhoon Visual</title>
 </head>
 
 <body>
+  <h1 style="text-align: center;">Typhoon Visual.</h1>
+
   <div class="container">
-    <h1>
-      Typhoon Visual
-    </h1>
-    <div>
-      <button type = "button" id = "FuckTarraButton">Suck it Tarra!</button>
-      <button type = "button" id = "SuckItButton">Press Me</button><br>
-    </div>
-    <br>
-    <form>
-      <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" class="form-control-file" id="exampleInputFile">
-      <div class="input-group">
-        <label for="coordInputExample">Coordinates for the grid</label>
-        <input class="form-control position-box" type="text" id="Lat1" placeholder="Latitude 1"></input>
-        <br>
-        <input class="form-control position-box" type="text" id="Long1" placeholder="Longitude 1"></input>
-        <br>
-        <input class="form-control position-box" type="text" id="Lat2" placeholder="Latitude 2"></input>
-        <br>
-        <input class="form-control position-box" type="text" id="Long2" placeholder="Longitude 2"></input>
-        <button type="button" id="coordSubmit">Submit</button>
+    <div class="row">
+      <div class="col-md-4">
+        <!-- <h1>
+          Typhoon Visual
+        </h1>
+        <div>
+          <button type = "button" id = "FuckTarraButton">Suck it Tarra!</button>
+          <button type = "button" id = "SuckItButton">Press Me</button><br>
+        </div>
+        <br> -->
+        <form>
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" class="form-control-file" id="exampleInputFile">
+          </div>
+
+          <div class="input-group">
+            <label for="coordInputExample">Coordinates for the grid</label>
+            <input class="form-control position-box" type="text" id="Lat1" placeholder="Latitude 1"></input>
+            <br>
+            <input class="form-control position-box" type="text" id="Long1" placeholder="Longitude 1"></input>
+            <br>
+            <input class="form-control position-box" type="text" id="Lat2" placeholder="Latitude 2"></input>
+            <br>
+            <input class="form-control position-box" type="text" id="Long2" placeholder="Longitude 2"></input>
+            <button type="button" id="coordSubmit">Submit</button>
+          </div>
+        </form>
       </div>
-    </form>
+
+      <div class="col-md-8">
+        <div>
+          hello yes i am big. This is where big grid shall go.
+        </div>
+      </div>
+    </div>
   </div>
 
 </body>
 </html>
-<script>
+
+<!-- <script>
     var btn = document.getElementById("FuckTarraButton");
     btn.onclick = function() {
         window.alert("HAHAHAHAHAHAHAHAH fuck you");
@@ -54,4 +63,4 @@
     btn2.onclick = function() {
         window.alert("Suck it.");
     }
-</script>
+</script> -->
