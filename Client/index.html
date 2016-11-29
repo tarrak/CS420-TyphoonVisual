@@ -68,16 +68,21 @@ var map;
 function updateMap() {
 	var lat = parseInt(document.getElementById("Lat").value);
 	var long = parseInt(document.getElementById("Long").value);
-	map.setCenter(new google.maps.LatLng(lat,long));
-	map.setZoom(4);
-	// There are issues with some value when setting the location.
-	/*var bounds = {
-		north: lat + 10,
-		south: lat - 10,
-		east: long + 10,
-		west: long - 10
-	};
-	map.fitBounds(bounds);*/
+	if(lat > 80 | lat < -80){
+		alert("Invalid input. Please change the value for latitude.");
+	}
+	else{
+		map.setCenter(new google.maps.LatLng(lat,long));
+		//map.setZoom(4);
+		// There are issues with some value when setting the location.
+		var bounds = {
+			north: lat + 10,
+			south: lat - 10,
+			east: long + 10,
+			west: long - 10
+		};
+		map.fitBounds(bounds);
+	}
 }
 </script>
 <script type="text/javascript" language="javascript">
