@@ -60,7 +60,7 @@
       <div class="col-md-8">
         <div>
           hello yes i am big. This is where big grid shall go. <br>
-          <canvas id="canvas" width="800px" height="800px" style="background: #fff; magrin:20px;"></canvas>
+          <div id="googleMap" style="width:75%;height:400px"></div>
         </div>
       </div>
     </div>
@@ -69,26 +69,13 @@
 </html>
 
 <script type="text/javascript" language="javascript">
-  var bw = 600;
-  var bh = 600;
-  var p = 15;
-
-  var canvas = document.getElementById("canvas");
-  var context = canvas.getContext("2d");
-  function drawBoard(){
-    for (var x = 0; x <= bw; x += 10) {
-      context.moveTo(0.5 + x + p, p);
-      context.lineTo(0.5 + x + p, bh + p);
-    }
-
-
-    for (var x = 0; x <= bh; x += 10) {
-      context.moveTo(p, 0.5 + x + p);
-      context.lineTo(bw + p, 0.5 + x + p);
-    }
-
-    context.strokeStyle = "black";
-    context.stroke();
+function typhoonMap(lat, long) {
+  var mapCanvas = document.getElementById("googleMap");
+  var mapOptions = {
+    center: new google.maps.LatLng(51.5, -0.2),
+    zoom: 5
   }
-  drawBoard();
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+}
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaZzkDDkif_HkJlnW_xMCQizFMiRD9wNI&callback=typhoonMap"></script>
