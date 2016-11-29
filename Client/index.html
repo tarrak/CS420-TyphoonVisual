@@ -28,7 +28,7 @@
   <div class="jumbotron jumbotron-fluid jumbotron-background">
     <div class="container">
       <h1 class="display-3 jumbotron-font">Typhoon Visual</h1>
-      <p class="lead jumbotron-font">Heres a cool description of our dumb project!</p>
+      <p class="lead jumbotron-font">Allows you to view specific typhoon information based on the typhoon's traveled path.</p>
     </div>
   </div>
 
@@ -38,28 +38,24 @@
         <form>
           <div class="form-group">
             <label class="position-label" for="exampleInputFile">File input</label>
-              <p>If you wish to add more data to the already tabulated typhoon data, you may do so here!</p>
+              <p>If you wish to add more data to the included database, you may do so here.</p>
             <input type="file" class="form-control-file" id="exampleInputFile">
           </div>
 
           <div class="input-group">
             <label class="position-label" for="coordInputExample">Coordinates for the grid</label>
-              <p>Enter the Coordinates for the 20 x 20 grid of typhoon data you would like to see here!</p>
-            <input class="form-control position-box" type="text" id="Lat1" placeholder="Latitude 1"></input>
+              <p>Enter the latitude and longitude for the center of a <br> 20 x 20 part of the map you would like to focus on.</p>
+            <input class="form-control position-box" type="text" id="Lat" placeholder="Latitude"></input>
             <br>
-            <input class="form-control position-box" type="text" id="Long1" placeholder="Longitude 1"></input>
+            <input class="form-control position-box" type="text" id="Long" placeholder="Longitude"></input>
             <br>
-            <input class="form-control position-box" type="text" id="Lat2" placeholder="Latitude 2"></input>
-            <br>
-            <input class="form-control position-box" type="text" id="Long2" placeholder="Longitude 2"></input>
-            <button class ="btn btn-background" type="button" id="coordSubmit">Submit</button>
+            <button class ="btn btn-background" type="button" id="coordSubmit" onclick="updateMap()">Submit</button>
           </div>
         </form>
       </div>
 
       <div class="col-md-8">
         <div>
-          hello yes i am big. This is where big grid shall go. <br>
           <div id="googleMap" style="width:75%;height:400px"></div>
         </div>
       </div>
@@ -67,15 +63,33 @@
   </div>
 </body>
 </html>
-
+<script type="text/javascript" langugae="javascript">
+var map;
+function updateMap() {
+	var lat = parseInt(document.getElementById("Lat").value);
+	var long = parseInt(document.getElementById("Long").value);
+	map.setCenter(new google.maps.LatLng(lat,long));
+	map.setZoom(4);
+	// There are issues with some value when setting the location.
+	/*var bounds = {
+		north: lat + 10,
+		south: lat - 10,
+		east: long + 10,
+		west: long - 10
+	};
+	map.fitBounds(bounds);*/
+}
+</script>
 <script type="text/javascript" language="javascript">
-function typhoonMap(lat, long) {
+function typhoonMap() {
   var mapCanvas = document.getElementById("googleMap");
   var mapOptions = {
-    center: new google.maps.LatLng(51.5, -0.2),
-    zoom: 5
+    center: new google.maps.LatLng(0, 0),
+    zoom: 1
   }
-  var map = new google.maps.Map(mapCanvas, mapOptions);
+  map = new google.maps.Map(mapCanvas, mapOptions);
+  var lat = 0;
+  var long = 0;
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaZzkDDkif_HkJlnW_xMCQizFMiRD9wNI&callback=typhoonMap"></script>
