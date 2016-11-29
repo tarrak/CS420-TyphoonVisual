@@ -68,7 +68,7 @@ var map;
 function updateMap() {
 	var lat = parseInt(document.getElementById("Lat").value);
 	var long = parseInt(document.getElementById("Long").value);
-	if(lat > 80 | lat < -80){
+	if(lat > 80 || lat < -80){
 		alert("Invalid input. Please change the value for latitude.");
 	}
 	else{
