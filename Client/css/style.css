@@ -18,3 +18,15 @@
   background-color: #1C7D87;
   color: white;
 }
+
+.description-font{
+  font-size: 12pt;
+}
+
+.documentation-margin{
+  margin-left: 5em;
+}
+
+.documentation-h3-font{
+  color: #7F7F7F;
+}
