@@ -13,7 +13,7 @@
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <a class="navbar-brand" href="index.html">Typhoon Visual</a>
     <ul class="nav navbar-nav">
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="index.html">Home</a>
       </li>
       <li class="nav-item">
@@ -27,14 +27,14 @@
 
   <div class="jumbotron jumbotron-fluid jumbotron-background">
     <div class="container">
-      <h1 class="display-3 jumbotron-font">Typhoon Visual</h1>
+      <h1 class="display-4 jumbotron-font">Typhoon Visual</h1>
       <p class="lead jumbotron-font">Allows you to view specific typhoon information based on the typhoon's traveled path.</p>
     </div>
   </div>
 
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-sm-4 ">
         <form>
           <div class="form-group">
             <label class="position-label" for="exampleInputFile">File input</label>
@@ -50,13 +50,14 @@
             <input class="form-control position-box" type="text" id="Long" placeholder="Longitude"></input>
             <br>
             <button class ="btn btn-background" type="button" id="coordSubmit" onclick="updateMap()">Submit</button>
+            <br><br>
           </div>
         </form>
       </div>
 
       <div class="col-md-8">
         <div>
-          <div id="googleMap" style="width:75%;height:400px"></div>
+          <div id="googleMap" style="width:100%;height:500px"></div>
         </div>
       </div>
     </div>
@@ -64,5 +65,38 @@
 </body>
 </html>
 <script type="text/javascript" langugae="javascript" src="index.js">
+<script type="text/javascript" language="javascript">
+var map;
+function updateMap() {
+	var lat = parseInt(document.getElementById("Lat").value);
+	var long = parseInt(document.getElementById("Long").value);
+	if(lat > 80 || lat < -80){
+		alert("Invalid input. Please change the value for latitude.");
+	}
+	else{
+		map.setCenter(new google.maps.LatLng(lat,long));
+		//map.setZoom(4);
+		// There are issues with some value when setting the location.
+		var bounds = {
+			north: lat + 10,
+			south: lat - 10,
+			east: long + 10,
+			west: long - 10
+		};
+		map.fitBounds(bounds);
+	}
+}
+</script>
+<script type="text/javascript" language="javascript">
+function typhoonMap() {
+  var mapCanvas = document.getElementById("googleMap");
+  var mapOptions = {
+    center: new google.maps.LatLng(0, 0),
+    zoom: 2
+  }
+  map = new google.maps.Map(mapCanvas, mapOptions);
+  var lat = 0;
+  var long = 0;
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaZzkDDkif_HkJlnW_xMCQizFMiRD9wNI&callback=typhoonMap"></script>
