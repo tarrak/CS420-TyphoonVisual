@@ -30,3 +30,11 @@
 .documentation-h3-font{
   color: #7F7F7F;
 }
+
+a:link {
+    color: #1C7D87;
+}
+
+a:hover {
+    color: #29B8C6;
+}
