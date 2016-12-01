@@ -62,19 +62,24 @@ a:visited{
 .member-img{
   width: 250px;
   height: 250px;
-  margin: 10px;
+  margin: 20px;
 }
 
 .member-text {
-  
+  padding-top: 0px;
   display: inline-block;
   flex: 1;
 }
-.member-text>h3 {
-  margin: 0px;
-  font-weight: 400;
+.member-text>h1 {
+  margin-bottom: 30px;
+  flex: 1;
+  display: inline-block;
 }
 
 .small-text{
   margin: 0 ;
+}
+
+.blockquote-margin{
+  margin: 0px;
 }
