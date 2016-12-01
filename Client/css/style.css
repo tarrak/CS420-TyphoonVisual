@@ -8,6 +8,12 @@
 
 .jumbotron-background{
   background-color: #1C7D87;
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+
+.jumbotron-img{
+  padding-right: 400px;
 }
 
 .jumbotron-font{
@@ -21,10 +27,12 @@
 
 .description-font{
   font-size: 12pt;
+  margin-right: 7em;
 }
 
 .documentation-margin{
   margin-left: 5em;
+  margin-right: 10em;
 }
 
 .documentation-h3-font{
@@ -32,9 +40,41 @@
 }
 
 a:link {
-    color: #1C7D87;
+  color: #1C7D87;
 }
 
 a:hover {
-    color: #29B8C6;
+  color: #29B8C6;
+}
+
+a:visited{
+  color: #1C7D87
+}
+
+.member {
+  display: flex;
+  margin-bottom: 10px;
+  background: white;
+  border-radius: 10px;
+  font-weight: 200;
+}
+
+.member-img{
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+}
+
+.member-text {
+  
+  display: inline-block;
+  flex: 1;
+}
+.member-text>h3 {
+  margin: 0px;
+  font-weight: 400;
+}
+
+.small-text{
+  margin: 0 ;
 }
