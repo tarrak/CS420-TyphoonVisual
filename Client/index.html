@@ -41,7 +41,13 @@
               <p>If you wish to add more data to the included database, you may do so here.</p>
             <input type="file" class="form-control-file" id="exampleInputFile">
           </div>
-
+		  <div class="input-group">
+			  <label class="position-label" for="yearInput">Filter storms</label>
+			  	<p>Enter a year from 1945 to 2015 to view storm data from or enter view all to display all storm data.</p>
+			 	<input class="form-control position-box" type="text" id="Year" placeholder="Year"></input>
+				<br>
+				<button class="btn btn-background" type="button" id="yearSubmit" onclick="getStormsByYear()">Submit</button>
+			</div>
           <div class="input-group">
             <label class="position-label" for="coordInputExample">Coordinates for the grid</label>
               <p>Enter the latitude and longitude for the center of a <br> 20 x 20 part of the map you would like to focus on.</p>
@@ -65,5 +71,4 @@
 </body>
 </html>
 <script type="text/javascript" langugae="javascript" src="index.js"></script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaZzkDDkif_HkJlnW_xMCQizFMiRD9wNI&callback=typhoonMap"></script>
