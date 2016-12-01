@@ -1,10 +1,3 @@
-var squel = require("squel");
-var mysql = require("mysql");
-var con = mysql.createConnection({
-	host: "146.148.34.167",
-	user: "root",
-	password: ""
-});
 var map;
 var colors = {1: "#A93226", 2:"#2980B9", 3:"#1ABC9C", 4:"#117A65", 5:"#884EA0",6:"#52BE80",7:"#EB984E",8:"#2E4053"};
 function updateMap() {
@@ -19,6 +12,11 @@ function updateMap() {
 		var northeast = new google.maps.LatLng(lat+10,long+10);
 		var bounds = new google.maps.LatLngBounds(southwest,northeast);
 		map.fitBounds(bounds);
+		var storms = getStormsByYear(lat,long);
+		for(i=0;i<storms.length;i++){
+			var storm = storms[i];
+			drawPath(storm[],storm[],storm[]);
+		}
 	}
 }
 
@@ -33,11 +31,15 @@ function typhoonMap() {
   var long = 0;
 }
 
-function getStormsByYear(){
+function getStormsByYear(lat,long){
 	var year = document.getElementById("Year").value;
 	year = year.replace(/\s+/g, '');
-	var s = squel.select();
-
+	var request = "/get/location/";
+	request += "lowLat" + "/" + (lat-10).toString() + "/";
+	request += "HighLat" + "/" + (lat+10).toString() + "/";
+	request += "lowLong" + "/" + (long-10).toString() + "/";
+	request += "highLong" + "/" + (long+10).toString() + "/";
+	request += "year" + "/" + year;
 	if(year.toLowerCase() == "all"){
 
 	}
