@@ -1,0 +1,2 @@
+
+(process:28338): GLib-CRITICAL **: g_path_get_basename: assertion 'file_name != NULL' failed
