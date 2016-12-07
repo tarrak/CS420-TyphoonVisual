@@ -1,10 +1,14 @@
 var squel = require("squel");
 var mysql = require("mysql");
 var express = require("express");
+
 var app = express();
 
 var queryCount = 0;
 var count = 0;
+
+
+
 /*
 con.query('SELECT * FROM hurricane_data where YEAR(YYYYMMDDHH) = 1945' and LATNS < 
 ,function(err,rows){
@@ -12,7 +16,8 @@ con.query('SELECT * FROM hurricane_data where YEAR(YYYYMMDDHH) = 1945' and LATNS
 
   console.log('Data received from Db:\n');
   console.log(rows);
-}); */
+}); 
+*/
 
 //con.query(Select CY  from hurricane_data where YEAR(YYYYMMDDHH) = 1945 AND LATNS > -70 AND 
 //LATNS < -30 
@@ -36,6 +41,7 @@ var con = mysql.createConnection({
   user: "root",
   password: "",
   database: "TyphoonVisual"
+  
 });
 app.all('*', function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -141,18 +147,18 @@ app.get('/get',function(){
    console.log("GET");
    });
 
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-   
-   console.log("Example app listening at http://%s:%s", host, port)
-});/*
+var server = app.listen(process.env.PORT || 5000, function () {
+   console.log(process.env.port);
+});
+
+/*
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello Apache!\n');
-}).listen(8000, '127.0.0.1')
+}).listen(8080)
 */
+
 /*
 makequeries([2015, -90, -70, 1495, 1695],function(rows, arr){
       loopCallBack(rows, arr, function(current){

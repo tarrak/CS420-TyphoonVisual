@@ -2,7 +2,7 @@ var xhr = new XMLHttpRequest();
 var map;
 var colors = {1: "#A93226", 2:"#2980B9", 3:"#1ABC9C", 4:"#117A65", 5:"#884EA0",6:"#52BE80",7:"#EB984E",8:"#2E4053"};
 function updateMap() {
-   map.setMapOnAll(null);
+   //map.setMapOnAll(null);
 	var lat = parseInt(document.getElementById("Lat").value);
 	var long = parseInt(document.getElementById("Long").value);
 	if(lat > 80 || lat < -80){
@@ -36,8 +36,8 @@ function typhoonMap() {
 function getStormsByYear(lat,long){
 	var year = document.getElementById("Year").value;
 	year = year.replace(/\s+/g, '');
-	var request = "http://127.0.0.1:8081/get/location/";
-	//var request = "http://127.0.0.1:8000/get/location";
+	//var request = "https://typhoon.herokuapp.com/proxy/get/location/";
+	var request = "http://127.0.0.1:5000/get/location/";
 	request += "lowLat" + "/" + (lat-10).toString() + "/";
 	request += "HighLat" + "/" + (lat+10).toString() + "/";
 	request += "lowLong" + "/" + (long-10).toString() + "/";
