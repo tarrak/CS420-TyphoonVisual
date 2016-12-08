@@ -5,20 +5,21 @@ function updateMap() {
    //map.setMapOnAll(null);
 	var lat = parseInt(document.getElementById("Lat").value);
 	var long = parseInt(document.getElementById("Long").value);
-	if(lat > 80 || lat < -80){
-		alert("Invalid input. Please change the value for latitude.");
+	if(isNaN(lat) || isNaN(long)){
+		alert("Invalid input. Please change the input values.");
 	}
 	else{
-		map.setCenter(new google.maps.LatLng(lat,long));
-		var southwest = new google.maps.LatLng(lat-10,long-10);
-		var northeast = new google.maps.LatLng(lat+10,long+10);
-		var bounds = new google.maps.LatLngBounds(southwest,northeast);
-		map.fitBounds(bounds);
-		var storms = getStormsByYear(lat,long);
-		/*for(i=0;i<storms.length;i++){
-			var storm = storms[i];
-			drawPath(storm[],storm[],storm[]);
-		}*/
+		if(lat > 80 || lat < -80){
+			alert("Invalid input. Please change the value for latitude.");
+		}
+		else{
+			map.setCenter(new google.maps.LatLng(lat,long));
+			var southwest = new google.maps.LatLng(lat-10,long-10);
+			var northeast = new google.maps.LatLng(lat+10,long+10);
+			var bounds = new google.maps.LatLngBounds(southwest,northeast);
+			map.fitBounds(bounds);
+			var storms = getStormsByYear(lat,long);
+		}
 	}
 }
 
@@ -35,45 +36,49 @@ function typhoonMap() {
 
 function getStormsByYear(lat,long){
 	var year = document.getElementById("Year").value;
-	year = year.replace(/\s+/g, '');
-	//var request = "https://typhoon.herokuapp.com/proxy/get/location/";
-	var request = "http://127.0.0.1:5000/get/location/";
-	request += "lowLat" + "/" + (lat-10).toString() + "/";
-	request += "HighLat" + "/" + (lat+10).toString() + "/";
-	request += "lowLong" + "/" + (long-10).toString() + "/";
-	request += "highLong" + "/" + (long+10).toString() + "/";
-	request += "year" + "/" + year;
-	xhr.open('GET', request, true);
-	xhr.send();
-	if(year.toLowerCase() == "all"){
-
+	if(parseInt(year) < 1945 || parseInt(year) > 2015){
+		alert("The year is invalid. Please enter another year.");
 	}
 	else{
-
+		if(isNaN(parseInt(year))){
+			alert("The year is invalid. Please enter another year");
+		}
+		else{
+			year = year.replace(/\s+/g, '');
+			//var request = "https://typhoon.herokuapp.com/proxy/get/location/";
+			var request = "http://127.0.0.1:5000/get/location/";
+			request += "lowLat" + "/" + (lat-10).toString() + "/";
+			request += "HighLat" + "/" + (lat+10).toString() + "/";
+			request += "lowLong" + "/" + (long-10).toString() + "/";
+			request += "highLong" + "/" + (long+10).toString() + "/";
+			request += "year" + "/" + year;
+			xhr.open('GET', request, true);
+			xhr.send();
+		}
 	}
 }
 xhr.onreadystatechange = function() {
     var results = [];
     if (xhr.readyState == XMLHttpRequest.DONE) {
         var data = xhr.responseText;
-	data = data.split("],[");
+	}
+	if(data){
+		data = data.split("],[");
 	//results.push(JSON.parse(data[0]));
-
-
-	for(i = 0;i < data.length; i++ ){
-       data[i] = data[i].replace('[','');
-       data[i] = data[i].replace('[','');
-       data[i] = data[i].replace(']','');
-       data[i] = data[i].replace(']','');
-	    results.push(JSON.parse(data[i]));
+		for(i = 0;i < data.length; i++ ){
+       		data[i] = data[i].replace('[','');
+       		data[i] = data[i].replace('[','');
+       		data[i] = data[i].replace(']','');
+       		data[i] = data[i].replace(']','');
+			results.push(JSON.parse(data[i]));
+		}
 	}
 //	results.push(JSON.parse(data[data.length - 1]));
 	for(i = 0; i < results.length;i++){
       console.log(results[i].LonEW / 10);
       drawPoint(results[i].LatNS / 10, results[i].LonEW / 10, results[i].STORMNAME, results[i].YYYYMMDDHH);
-   
+
 	}
-   }
 }
 
 function drawPoint(startLat,startLong, name, startDate){
